@@ -12,20 +12,36 @@ namespace IndustrialProtocol.Controllers
 {
     public class Protocol
     {
-        public void get(int inStart, int inLength, Action<byte[], bool> inFunc)
+        public bool get(int inStart, int inLength, Action<byte[], bool> inFunc)
         {
-            // Grouping all request in a model request to exec get function
-            Request.add(inStart, inLength, inFunc);
-            get();
+            try 
+            { 
+                // Grouping all request in a model request to exec get function
+                Request.add(inStart, inLength, inFunc);
+                get();
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+            return true;
         }
-        public void get(ReadParameters inParameters)
+        public bool get(ReadParameters inParameters)
         {
-            int inStart = inParameters.intLength;
-            int inLength = inParameters.intLength;
-            var inFunc = inParameters.actPayload;
-            // Grouping all request in a model request to exec get function
-            Request.add(inStart, inLength, inFunc);
-            get();
+            try
+            {
+                int inStart = inParameters.intLength;
+                int inLength = inParameters.intLength;
+                var inFunc = inParameters.actPayload;
+                // Grouping all request in a model request to exec get function
+                Request.add(inStart, inLength, inFunc);
+                get();
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+            return true;
         }
         private async void get()
         {
@@ -78,24 +94,6 @@ namespace IndustrialProtocol.Controllers
                     }
                 }
             }
-        }
-
-        public void getList()
-        {
-            //var flDocument = new FileStream(@"C:\app\SimuFile.txt", FileMode.Open);
-            //if (inLength > 0 && inLength < 11)
-            //{
-                //byte[] test = new byte[inLength];
-                //var reader = new BinaryReader(flDocument);
-                //reader.BaseStream.Seek(inStart, SeekOrigin.Begin);
-                //reader.Read(test, 0, inLength);
-
-                //inFunc(test, true);
-            //}
-            //else
-            //{
-                //inFunc(null, false);
-            //}
         }
     }
 }
