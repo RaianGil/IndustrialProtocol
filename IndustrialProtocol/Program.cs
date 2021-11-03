@@ -8,9 +8,8 @@ namespace IndustrialProtocol
     class Program
     {
         static int boPru = 0;
-        static Lab rose = new Lab();
         static Random random = new Random(4);
-        static void prue(byte[] payback, bool err)
+        static void demoFunction(byte[] payback, bool err)
         {
             if (err)
             {
@@ -22,22 +21,23 @@ namespace IndustrialProtocol
         }
         static void Main(string[] args)
         {
-            Pro1();
+            asyncListener();
         }
-        static async void Pro()
+        static async void TestRequest()
         {
-            var protocol = new Protocol();
+            var crtProtocol = new Protocol();
             int inStart = random.Next(0,4956);
             int inLengt = random.Next(1,20);
-            protocol.get(inStart, inLengt, prue);
+            crtProtocol.get(inStart, inLengt, demoFunction);
         }
-        static async void Pro1()
+        static async void asyncListener()
         {
+            //Exec a test request when push any key
             ConsoleKeyInfo cki;
             do
             {
                 cki = Console.ReadKey();
-                Pro();
+                TestRequest();
             } while (cki.Key != ConsoleKey.Escape);
         }
     }
