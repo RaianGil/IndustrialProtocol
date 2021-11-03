@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndustrialProtocol", "IndustrialProtocol\IndustrialProtocol.csproj", "{C1BCB926-7B80-485C-96D2-6B86A6BBEE69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console.Test", "Console.Test\Console.Test.csproj", "{97732E6E-B1D8-4670-8245-804607547326}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C1BCB926-7B80-485C-96D2-6B86A6BBEE69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1BCB926-7B80-485C-96D2-6B86A6BBEE69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1BCB926-7B80-485C-96D2-6B86A6BBEE69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1BCB926-7B80-485C-96D2-6B86A6BBEE69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97732E6E-B1D8-4670-8245-804607547326}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97732E6E-B1D8-4670-8245-804607547326}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97732E6E-B1D8-4670-8245-804607547326}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97732E6E-B1D8-4670-8245-804607547326}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {662F5924-8CB0-4D7E-AB5F-4F6B8B1B19E4}
+	EndGlobalSection
+EndGlobal
