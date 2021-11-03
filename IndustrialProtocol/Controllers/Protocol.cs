@@ -14,6 +14,7 @@ namespace IndustrialProtocol.Controllers
     {
         public void get(int inStart, int inLength, Action<byte[], bool> inFunc)
         {
+            // Grouping all request in a model request to exec get function
             Request.add(inStart, inLength, inFunc);
             get();
         }
@@ -22,12 +23,15 @@ namespace IndustrialProtocol.Controllers
             int inStart = inParameters.intLength;
             int inLength = inParameters.intLength;
             var inFunc = inParameters.actPayload;
-            //
+            // Grouping all request in a model request to exec get function
             Request.add(inStart, inLength, inFunc);
             get();
         }
         private async void get()
         {
+            // Function get all request grouped in Models.Request
+
+            // Delay for group as many request simulate
             await Task.Delay(500);
             var inParameters = Request.get();
             bool hasData;
@@ -47,17 +51,16 @@ namespace IndustrialProtocol.Controllers
                     int inLength = Paramerters.intLength;
                     Debug.WriteLine($"Start: {inStart}, Length: {inLength}");
                     var inFunc = Paramerters.actPayload;
-                    string pru = "";
                     //
                     var flDocument = File.get;
                     if (inLength > 0 && inLength < 11)
                     {
-                        byte[] test = new byte[inLength];
-                        var reader = new BinaryReader(flDocument);
-                        reader.BaseStream.Seek(inStart, SeekOrigin.Begin);
-                        reader.Read(test, 0, inLength);
+                        byte[] btReturn = new byte[inLength];
+                        var dataToRead = new BinaryReader(flDocument);
+                        dataToRead.BaseStream.Seek(inStart, SeekOrigin.Begin);
+                        dataToRead.Read(btReturn, 0, inLength);
 
-                        inFunc(test, true);
+                        inFunc(btReturn, true);
                     }
                     else
                     {
