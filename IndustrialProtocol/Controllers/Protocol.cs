@@ -65,7 +65,6 @@ namespace IndustrialProtocol.Controllers
                 {
                     int inStart = Paramerters.intStart;
                     int inLength = Paramerters.intLength;
-                    Debug.WriteLine($"Start: {inStart}, Length: {inLength}");
                     var inFunc = Paramerters.actPayload;
                     FileStream flDocument = null;
                     //
@@ -82,10 +81,17 @@ namespace IndustrialProtocol.Controllers
                     if (inLength > 0 && inLength < 11)
                     {
                         byte[] btReturn = new byte[inLength];
-                        var dataToRead = new BinaryReader(flDocument);
-                        dataToRead.BaseStream.Seek(inStart, SeekOrigin.Begin);
-                        dataToRead.Read(btReturn, 0, inLength);
-
+                        try
+                        {
+                            var dataToRead = new BinaryReader(flDocument);
+                            dataToRead.BaseStream.Seek(inStart, SeekOrigin.Begin);
+                            dataToRead.Read(btReturn, 0, inLength);
+                        }
+                        catch (Exception e)
+                        {
+                            inFunc(null, false);
+                            continue;
+                        }
                         inFunc(btReturn, true);
                     }
                     else

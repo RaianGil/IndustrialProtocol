@@ -12,7 +12,6 @@ namespace Console.Test
     {
         static IFixture _fixture;
         Mock<ReadParameters> MockTestPar = new Mock<ReadParameters>();
-        Mock<Protocol> MockTestRead = new Mock<Protocol>();
         static void demoFunction(byte[] payback, bool err)
         {
             if (err)
@@ -40,6 +39,17 @@ namespace Console.Test
             var parametersRead = new ReadParameters();
             Protocol ctrPru = new Protocol();
             ctrPru.get(MockTestPar.Object);
+            bool ret = ctrPru.get(MockTestPar.Object);
+            Assert.IsTrue(ret);
+        }
+        [Test]
+        public void Test2()
+        {
+            _fixture = new Fixture().Customize(new AutoMoqCustomization());
+            int intStart = _fixture.Create<int>();
+            int intLength = _fixture.Create<int>();
+            Protocol ctrPru = new Protocol();
+            ctrPru.get(intStart, intLength, demoFunction);
             bool ret = ctrPru.get(MockTestPar.Object);
             Assert.IsTrue(ret);
         }
