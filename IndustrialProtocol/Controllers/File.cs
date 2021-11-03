@@ -7,6 +7,6 @@ namespace IndustrialProtocol.Controllers
 {
     class File
     {
-        public static FileStream get = new FileStream(@"C:\app\SimuFile.txt", FileMode.Open);
+        public static FileStream get = new FileStream(@"..\..\..\src\SimuFile.txt", FileMode.Open);
     }
 }

@@ -51,8 +51,18 @@ namespace IndustrialProtocol.Controllers
                     int inLength = Paramerters.intLength;
                     Debug.WriteLine($"Start: {inStart}, Length: {inLength}");
                     var inFunc = Paramerters.actPayload;
+                    FileStream flDocument = null;
                     //
-                    var flDocument = File.get;
+                    try
+                    {
+                        flDocument = File.get;
+                    }
+                    catch (Exception e)
+                    {
+                        inFunc(null, false);
+                        Debug.WriteLine($"Can't Opened file: {e}");
+                        continue;
+                    }
                     if (inLength > 0 && inLength < 11)
                     {
                         byte[] btReturn = new byte[inLength];
