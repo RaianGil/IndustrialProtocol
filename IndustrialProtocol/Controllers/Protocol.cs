@@ -51,6 +51,7 @@ namespace IndustrialProtocol.Controllers
             await Task.Delay(500);
             var inParameters = Request.get();
             bool hasData;
+            bool openFile;
 
             try
             {
@@ -61,29 +62,31 @@ namespace IndustrialProtocol.Controllers
 
             if(hasData)
             {
+                FileStream flDocument = null;
+                BinaryReader dataToRead = null;
+                //
+                try
+                {
+                    flDocument = File.get;
+                    dataToRead = new BinaryReader(flDocument);
+                    openFile = true;
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine($"Can't Opened file: {e}");
+                    openFile = false;
+                }
                 foreach (var Paramerters in inParameters)
                 {
                     int inStart = Paramerters.intStart;
                     int inLength = Paramerters.intLength;
                     var inFunc = Paramerters.actPayload;
-                    FileStream flDocument = null;
-                    //
-                    try
-                    {
-                        flDocument = File.get;
-                    }
-                    catch (Exception e)
-                    {
-                        inFunc(null, false);
-                        Debug.WriteLine($"Can't Opened file: {e}");
-                        continue;
-                    }
-                    if (inLength > 0 && inLength < 11)
+
+                    if (inLength > 0 && inLength < 11 && openFile)
                     {
                         byte[] btReturn = new byte[inLength];
                         try
                         {
-                            var dataToRead = new BinaryReader(flDocument);
                             dataToRead.BaseStream.Seek(inStart, SeekOrigin.Begin);
                             dataToRead.Read(btReturn, 0, inLength);
                         }
