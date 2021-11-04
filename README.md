@@ -23,4 +23,4 @@ En las puebas unitarias tengo que confesar que no esta tan pulido como queria po
 # Conclusion
 Fue un reto interesante realmente estaba un poco confundido al principio de que tenia que hacer pero a medida que fui leyendo me fui aclarando, super divertido el challenge me gusto mucho. Esperando tener el privilegio de que me den la oportunidad de trabajar con ustedes y si no les agradeceria grandemente si me dan un feedback.
 
-Me despido y agradecido grandemente por la oportunidad Raian M. Gil del Rosario
+Me despido y agradecido grandemente por la oportunidad `Raian M. Gil del Rosario`
